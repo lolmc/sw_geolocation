@@ -5,7 +5,8 @@ This Python script utilizes the GeoPy geocoding library to batch geocode a numbe
 until a pair of latitude/longitude values are returned. Python 3 port and refactor of a script by @rgdonohue.
 https://gist.github.com/ericmhuntley/0c293113aa75a254237c143e0cf962fa
 
-Built to anticipate an input csv should that includes columns named street, city, state, country.
+Built to anticipate an input csv should that includes columns named street, city, post code.
+
 Usage Example
 
 python geocode.py data.csv 100
