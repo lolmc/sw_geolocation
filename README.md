@@ -12,6 +12,8 @@ milliseconds.
 
 A number of geolocation APIs can be polled for an answer but I have only tested it using the Open map Quest API as it was the easiest to set up and free!
 
+N.B You will need to sort out your own unique API keys and add them to the keys.py file before running the script or it will just exit with an error
+
 I have added a logger function to take note of when things go wrong so feel free to turn that off if you want.
 
 The endgame is to have the latitude and longitude be a pair of custom properties for each Network device in Solarwinds so it will be displayed correctly on the Geographic World Map. getting the dat into Solarwinds is still TBD as I may export the devie list and add the co-ordinates and re-import or tinker with the sql code included in the files of this repository.
