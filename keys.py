@@ -12,4 +12,4 @@
 # g3_api = ''
 
 # OpenMapQuest API key
-omq_api ='txNRTsTz2lGm8cDpwUKRDuSnwb1tZgPN'
+omq_api ='YOURUNIQUEAPICODEGOESHERE'
