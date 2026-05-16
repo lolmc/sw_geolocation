@@ -13,7 +13,8 @@ data/
 *.log
 
 # SolarWinds staging CSVs (large)
-gc_*.csv
+gc_*
+*.csv
 
 # IDEs
 .vscode/
