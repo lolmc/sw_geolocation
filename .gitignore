@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Data files
+data/
+*.db
+*.zip
+
+# Logs
+*.log
+
+# SolarWinds staging CSVs (large)
+gc_*.csv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
