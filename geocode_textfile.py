@@ -29,7 +29,7 @@ import csv
 import logging
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional, Tuple
 
@@ -170,7 +170,7 @@ def geocode_line(address_line: str, line_number: int, local_db: LocalPostcodeDB,
             "lng": None,
             "postcode": None,
             "geocode_source": "blank_line",
-            "geocode_date": datetime.utcnow().isoformat(),
+            "geocode_date": datetime.now(timezone.utc).isoformat(),
         }
 
     clean_address, postcode = _extract_postcode(original)
@@ -187,7 +187,7 @@ def geocode_line(address_line: str, line_number: int, local_db: LocalPostcodeDB,
                 "lng": lng,
                 "postcode": postcode,
                 "geocode_source": "codepoint_open",
-                "geocode_date": datetime.utcnow().isoformat(),
+                "geocode_date": datetime.now(timezone.utc).isoformat(),
             }
 
     # --- Internet fallback ---
@@ -201,7 +201,7 @@ def geocode_line(address_line: str, line_number: int, local_db: LocalPostcodeDB,
             "lng": lng,
             "postcode": postcode,
             "geocode_source": source,
-            "geocode_date": datetime.utcnow().isoformat(),
+            "geocode_date": datetime.now(timezone.utc).isoformat(),
         }
 
     logging.error(f"[line {line_number}] FAILED: {original}")
@@ -211,7 +211,7 @@ def geocode_line(address_line: str, line_number: int, local_db: LocalPostcodeDB,
         "lng": None,
         "postcode": postcode,
         "geocode_source": "failed",
-        "geocode_date": datetime.utcnow().isoformat(),
+        "geocode_date": datetime.now(timezone.utc).isoformat(),
     }
 
 

@@ -29,13 +29,14 @@ from pathlib import Path
 # We need a tiny helper to turn UK grid numbers (Eastings/Northings)
 # into latitude/longitude numbers that maps use everywhere else in the world.
 try:
-    from osgridconverter import grid_to_latlong
+    from OSGridConverter import OSGridReference
 except ImportError as exc:
     print(
         "ERROR: The Python package 'osgridconverter' is not installed.\n"
         "It is needed to turn UK grid numbers into regular latitude/longitude.\n"
         "Please install it by running:\n"
-        "    pip install osgridconverter\n"
+        "    uv pip install osgridconverter\n"
+        "    OR  pip install osgridconverter\n"
     )
     sys.exit(1)
 
@@ -193,7 +194,7 @@ def build_postcode_database():
                         continue
 
                     # Convert UK grid numbers to regular world coordinates (latitude/longitude).
-                    latlong = grid_to_latlong(easting, northing)
+                    latlong = OSGridReference(easting, northing).toLatLong()
                     latitude = latlong.latitude
                     longitude = latlong.longitude
 

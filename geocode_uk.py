@@ -43,7 +43,7 @@ import csv
 import sys
 import time
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -250,7 +250,7 @@ def geocode_row(row: pd.Series, local_db: LocalPostcodeDB, geocoders: List[Tuple
                     "lat": lat,
                     "lng": lng,
                     "geocode_source": "codepoint_open",
-                    "geocode_date": datetime.utcnow().isoformat(),
+                    "geocode_date": datetime.now(timezone.utc).isoformat(),
                 })
 
     # --- ATTEMPT 2: Internet geocoding (fallback) ---
@@ -266,7 +266,7 @@ def geocode_row(row: pd.Series, local_db: LocalPostcodeDB, geocoders: List[Tuple
             "lat": None,
             "lng": None,
             "geocode_source": "no_data",
-            "geocode_date": datetime.utcnow().isoformat(),
+            "geocode_date": datetime.now(timezone.utc).isoformat(),
         })
 
     result = _internet_geocode(address_text, f"row {row.name}", geocoders)
@@ -285,7 +285,7 @@ def geocode_row(row: pd.Series, local_db: LocalPostcodeDB, geocoders: List[Tuple
             "lat": lat,
             "lng": lng,
             "geocode_source": source,
-            "geocode_date": datetime.utcnow().isoformat(),
+            "geocode_date": datetime.now(timezone.utc).isoformat(),
         })
 
     # --- Complete failure ---
@@ -294,7 +294,7 @@ def geocode_row(row: pd.Series, local_db: LocalPostcodeDB, geocoders: List[Tuple
         "lat": None,
         "lng": None,
         "geocode_source": "failed",
-        "geocode_date": datetime.utcnow().isoformat(),
+        "geocode_date": datetime.now(timezone.utc).isoformat(),
     })
 
 
